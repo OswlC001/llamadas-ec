@@ -5,10 +5,7 @@
  */
 package backingBeans;
 
-import java.io.IOException;
-import java.net.Socket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import backingBeans.util.SoftPhone;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
@@ -21,9 +18,6 @@ import javax.faces.bean.RequestScoped;
 public class LlamadasBacking {
 
     private String numero;
-    final String HOST = "192.168.1.108";
-    final int PUERTO = 8080;
-    Socket sc;
 
     /**
      * Creates a new instance of LlamadasBacking
@@ -48,17 +42,16 @@ public class LlamadasBacking {
     }
 
     public void llamar() {
-        try {
-            sc = new Socket(HOST, PUERTO);
-            sc.close();
-
-        } catch (IOException ex) {
-            Logger.getLogger(LlamadasBacking.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        System.out.println("Inicio");
+        SoftPhone sf = new SoftPhone();
+        sf.realizarLlamada("");
+        System.out.println("Conecto");
     }
 
     public void colgar() {
 
     }
+
+   
 
 }
